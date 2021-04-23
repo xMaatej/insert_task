@@ -25,7 +25,7 @@ Data in the app consists of two models:
 - `Category` with following fields:
   - `id`
   - `name` - human-readable and shown in the frontend
-  - `ordering`
+  - `ordering` - meant to be set manually by app's admin
 - `Offer`, related many-to-one with `Category`, with following fields:
   - `id`
   - `title`
