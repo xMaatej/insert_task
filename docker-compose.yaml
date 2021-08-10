@@ -1,0 +1,37 @@
+version: '3'
+
+services:
+
+  db:
+    image: mysql:8.0
+    volumes:
+      - ap_mysql_data:/var/lib/mysql
+    ports:
+      - "3377:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=admin
+      - MYSQL_ROOT_HOST=%
+      - MYSQL_DATABASE=appdb
+
+  web:
+    build: .
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    links:
+      - db
+    tty: true
+    depends_on:
+      - db
+    environment:
+      - DJANGO_SETTINGS_MODULE=app.settings
+      - MYSQL_ROOT_PASSWORD=admin
+      - MYSQL_DATABASE=appdb
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=admin
+      - MYSQL_HOST=db
+      - MYSQL_PORT=3306
+
+volumes:
+  ap_mysql_data:
