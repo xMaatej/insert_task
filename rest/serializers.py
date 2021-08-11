@@ -7,13 +7,13 @@ from rest_framework import serializers
 from rest.models import Offer, Category
 
 
-class CategorySerializer(serializers.HyperlinkedModelSerializer):
+class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
-        fields = ['name']
+        fields = '__all__'
 
 
-class OfferSerializer(serializers.HyperlinkedModelSerializer):
+class OfferSerializer(serializers.ModelSerializer):
     class Meta:
         model = Offer
-        fields = ['title', 'description', 'price', 'created', 'category']
+        fields = '__all__'

@@ -10,7 +10,7 @@ class CategoryAdmin(admin.ModelAdmin):
 
 
 class OfferAdmin(admin.ModelAdmin):
-    pass
+    fields = ('title', 'category', 'price', 'created')
 
 
 admin.site.register(Category, CategoryAdmin)
